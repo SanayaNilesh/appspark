@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Chatbot Web App</title>
+    <style>
+        body {
+            background: rgb(163, 220, 246);
+        }
+
+        #chat-area {
+            background-color: rgb(132, 0, 255);
+            min-height: 200px;
+            padding: auto;
+            border-radius: 12px;
+            box-shadow: 0 2px 8 px rgb(208, 205, 204);
+            max-width: 420px;
+            margin: auto;
+            overflow-y: auto;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5 rem
+        }
+
+        .user-msg {
+            color: rgb(4, 28, 92);
+            align-self: flex-end;
+            background-color: rgb(127, 217, 255);
+            padding: 12px;
+            border-radius: 18px 18px 2px 18px;
+            max-width: 70%;
+            word-break: break-word;
+        }
+
+        .bot-msg {
+            color: #f9a8ec;
+            align-self: flex-start;
+            background-color: rgb(228, 5, 240);
+            padding: 0.5em 1em;
+            border-radius: 18p 18px 18px 2px;
+            max-width: 70%;
+            word-break: break-word;
+        }
+
+        #chat-form {
+            display: flex;
+            justify-content: center;
+            max-width: 420px;
+            margin: 0 auto;
+            gap: 0.5em;
+        }
+
+        #user-input {
+            flex: 1;
+            padding: 0.7em;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 1em;
+        }
+
+        button {
+            padding: 0.7em 1.5em;
+            background: rgb(141, 237, 168);
+            color: #fff border-radius: 8px;
+            border: none;
+            font-size: 1em;
+            cursor: pointer;
+            transition background: 0.2s;
+        }
+
+        button:hover {
+            background: rgb(251, 0, 255);
+        }
+    </style>
+</head>
+
+<body>
+    <h2 style="text-align: center;">Chatbot Web App</h2>
+    <div id="chat-area"></div>
+    <form id="chat-form">
+        <input type="text" id="user-input" placeholder="Type your message...">
+        <button type="submit">Send</button>
+    </form>
+    <script>
+        function getBotReply(msg) {
+            msg = msg.toLowerCase();
+            if (msg.includes('hello') || msg.includes('hi')) return "Hello! How can i help you?";
+            if (msg.includes('name')) return "Im GroWiseBot!";
+            if (msg.includes('weather')) return "I cannot predict the weather!";
+            if (msg.includes('joke')) return "Why did the chicken cross the road? To get to the other side";
+            else {
+                return "tell me more!";
+            }
+        }
+        const chatArea = document.getElementById('chat-area')
+        document.getElementById('chat-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const input = document.getElementById('user-input');
+            const msg = input.value.trim();
+            if (msg) {
+                chatArea.innerHTML += `<div class="user-msg">${msg}</div>`;
+                setTimeout(() => {
+                    chatArea.innerHTML += `<div class="bot-msg">${getBotReply(msg)}</div>`;
+                    chatArea.scrollTop = chatArea.scrollHeight;
+                }, 300); // Simulate a "thinking" pause
+                input.value = '';
+                chatArea.scrollTop = chatArea.scrollHeight;
+            }
+        });
+    </script>
+</body>
+</html>

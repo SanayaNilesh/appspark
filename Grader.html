@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JavaScript Function Practice</title>
+</head>
+
+<body>
+    <input type="Number" id="grade" placeholder="Enter your grade">
+    <button onclick="checkGrade()">Check</button>
+    <div id="result">Whats ur grade?</div>
+    <script>
+        function checkGrade() {
+            var grade = document.getElementById("grade").value;
+            if (grade>100 && grade<1){
+                document.write("Enter correct Score")
+            }
+            if (grade >= 90) {
+                result = "A";
+            } else if (grade<=90 && grade >80) {
+                result = "B"
+            } else if (grade <= 80 && grade > 60) {
+                result = "C"
+            } else if (grade <= 60 && grade > 50) {
+                result = "F"
+            }
+
+            document.getElementById("result").textContent = result;
+        }    
+    </script>
+</body>
+
+</html>
