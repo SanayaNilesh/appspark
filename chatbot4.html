@@ -116,7 +116,7 @@
             if (category === 'sports') {
                 if (msg.includes('soccer')) {
                     subCategory = 'soccer';
-                    return "Soccer is the world's most popular sport! Want to know about rules, players, or famous teams?";
+                    return "Soccer is the world's most popular sport! Want to know about rules,famous athletes, or popular teams?";
                 }
                 if (msg.includes('baseball')) {
                     subCategory = 'baseball';
@@ -126,11 +126,49 @@
 
             if (subCategory === 'soccer') {
                 if (msg.includes('rules')) return "A soccer game lasts 90 minutes, split into two halves.";
-                if (msg.includes('famous')) return "Some famous players include Messi, Ronaldo, and Mbappé.";
-                if (msg.includes('teams')) return "Top clubs include FC Barcelona, Real Madrid, and Manchester City.";
+                if (msg.includes('famous athletes')) return "Some famous athlethes include Messi, Ronaldo, and Mbappé.";
+                if (msg.includes('popular teams')) return "Top clubs include FC Barcelona, Real Madrid, and Manchester City.";
                 if (msg.includes('how many players')) return "Each team has 11 players on the field.";
                 if (msg.includes('goalie')) return "The goalie is the only player allowed to use hands inside the penalty box.";
                 if (msg.includes('positions')) return "Positions include forwards, midfielders, defenders, and the goalkeeper.";
+            }
+
+            if (msg.includes('academic')) {
+                category = 'academic';
+                subCategory = '';
+                return "Which subject do you like: math or english?";
+            }
+
+            if (category === 'academic') {
+                if (msg.includes('english')) {
+                    subCategory = 'english';
+                    return "English is great for expressing ideas! Want to know about grammar, literature, or writing tips?";
+                }
+            }
+
+            if (subCategory === 'english') {
+                if (msg.includes('grammar')) return "Grammar includes rules for sentence structure, punctuation, and word use.";
+                if (msg.includes('literature')) return "Famous literature includes works like Shakespeare's plays and classic novels.";
+                if (msg.includes('writing')) return "Good writing includes clear ideas, strong vocabulary, and proper grammar.";
+            }
+
+                        if (msg.includes('music')) {
+                category = 'music';
+                subCategory = '';
+                return "What genre do you like: hiphop or country?";
+            }
+
+            if (category === 'music') {
+                if (msg.includes('hiphop')) {
+                    subCategory = 'hiphop';
+                    return "Hip-hop combines rhythm and poetry. Want to know about artists, history, or styles?";
+                }
+            }
+
+            if (subCategory === 'hiphop') {
+                if (msg.includes('artists')) return "Famous hip-hop artists include Tupac, Jay-Z, Nicki Minaj, and Kendrick Lamar.";
+                if (msg.includes('history')) return "Hip-hop started in the 1970s in the Bronx, blending rap, DJing, breakdancing, and graffiti.";
+                if (msg.includes('styles')) return "Hip-hop styles include East Coast, West Coast, trap, and conscious rap.";
             }
 
             if (msg.includes('hello') || msg.includes('hi')) return "Hello! How can I help you?";
