@@ -2,36 +2,156 @@
 <html>
 
 <head>
-    <title> learn functions</title>
+    <title>Numbers</title>
 </head>
 
 <body>
+    <h2>Print Numbers</h2>
+    <div id="output"></div>
+
     <script>
-function add(x,y) {
-    return x + y;
-}
-let result = add(3, 5); // result is 8 
-alert("The result is " + result)
+        function add(num_list) {
+            let total = 0;
+            for (let num of num_list) {
+                total += num;
+            }
+            return "Total is: <b>" + total + "</b><br>";
+        }
 
-function sub(x,y) {
-    return x - y;
-}
-let answer = sub(7, 5); // answer is 2
-alert("The result is " + answer)
-   
+        function multiply(num_list) {
+            let total = 1;
+            for (let num of num_list) {
+                total *= num;
+            }
+            return "Multiplication Total is: <b>" + total + "</b><br>";
+        }
 
-    <form id = "num1">
-        <input type= "text" id="num1" placeholder= "Type your message..."> 
-        <button type="sumbit">Send</button>
-         </input>
-        </form> 
-         
+        function even(num_list) {
+            let count = 0;
+            let all_numbers = '';
+            for (let num of num_list) {
+                if (num % 2 === 0) {
+                    count++;
+                    all_numbers += num + ", ";
+                }
+            }
+            return "Total even numbers are: <b>" + count + "</b> and all Even numbers are: " + all_numbers.replace(/, $/i, "") + "<br>";
+        }
 
+        function three(num_list) {
+            let count = 0;
+            let all_numbers = '';
+            for (let num of num_list) {
+                if (num % 3 === 0) {
+                    count++;
+                    all_numbers += num + ", ";
+                }
+            }
+            return "Total numbers divisible by 3 are: <b>" + count + "</b> and all the numbers are: " + all_numbers.replace(/, $/i, "") + "<br>";
+        }
+        function largest(num_list) {
+            let large = num_list[0];
+            for (let num of num_list) {
+                if (num > large) {
+                    large = num;
+                }
+            }
+            return "The largest number is: <b>" + large + "</b><br>";
+        }
+        function reversedList(num_list) {
+            let reversed = "";
+            for (let i = num_list.length - 1; i >= 0; i--) {
+                reversed += num_list[i] + " ";
+            }
+            return "The reversed list is: <br> <b>" + reversed + "</b></br>";
+        }
+        function squared(num_list) {
+            let square = "";
+            for (let i = 0; i < num_list.length; i++) {
+                square += (num_list[i] ** 2) + ", ";
+            }
+            return "The Squared numebers are : <b>" + square.replace(/, $/i, "") + "</b><br>";
+        }
+        function odds(num_list) {
+            let count = 0;
+            let all_numbers = '';
+            let odd = 0
+            for (let num of num_list) {
+                if (num % 2 !== 0) {
+                    count++;
+                    all_numbers += num + ", ";
+                    odd += num
+                }
+            }
+            return "Total odd numbers are: <b>" + count + "</b> and all odd numbers are: " + all_numbers.replace(/, $/i, "") + "The total of the odd numbers: " + odd + "</br>";
+        }
+        function greater(num_list) {
+            let great = "";
+            for (let num of num_list) {
+                if (num > 10) {
+                    great += num + ", ";
+                }
+            }
+            return "The numbers greater than 10 are: <b>" + great.replace(/, $/i, "") + "</b><br>";
+        }
+        function targets(num_list) {
+            let target = 27;
+            for (let i = 0; i < num_list.length; i++) {
+                if (num_list[i] === target) {
+                    return "The index of the target is: <b>" + i + "</b><br>";
+                }
+            }
+            return "The target was not found.<br>";
+        }
+        function counts(num_list) {
+            let target = 27;
+            let count = 0;
 
-        </script>
-    
+            for (let i = 0; i < num_list.length; i++) {
+                if (num_list[i] === target) {
+                    count += 1;
+                }
+            }
+            return "The number of times the target appears is: <b>" + count + "</b><br>";
+        }
+        function index(num_list, target) {
+            count = 0
+            index_list = ""
+            for (let i = 0; i < num_list.length; i++) {
+                if (num_list[i] === target) {    
+                    count++;
+                    index_list += i + ", "
+                }
+            }
+            if(count == 0){
+            return "<strong>" + target + "</strong> not foun in the list.";
+            }
+            else{
+                return target 
+                + " appears " + count 
+                + " times in the array at indexes <strong>" + index_list.replace(/, $/i, "") + "</strong>";
+            }
+        }
 
+        let num_list = [2, 15, 6, 27, 12, 27];
+        let output = "";
+
+        output += "Numbers Are: <b><span style='color:blue'>" + num_list + "</span></b><br><br>";
+        output += add(num_list);
+        output += multiply(num_list);
+        output += even(num_list);
+        output += three(num_list);
+        output += largest(num_list);
+        output += reversedList(num_list);
+        output += squared(num_list);
+        output += odds(num_list);
+        output += greater(num_list);
+        output += targets(num_list);
+        output += counts(num_list);
+        output += index(num_list, 27);
+
+        document.getElementById("output").innerHTML = output;
+    </script>
 </body>
-
 
 </html>

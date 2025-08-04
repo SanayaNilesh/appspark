@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Chatbot Web App</title>
+    <style>
+        body {
+            background: #e6f4f9;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            text-align: center;
+            margin: 1em 0;
+            color: #333;
+        }
+
+        #chat-area {
+            background-color: #ffffff;
+            min-height: 200px;
+            padding: 1em;
+            border-radius: 12px;
+            border: 2px solid #ccc;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            margin: 0 auto 1em auto;
+            overflow-y: auto;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .user-msg {
+            color: #1a1a1a;
+            align-self: flex-end;
+            background-color: #daf2ff;
+            padding: 10px 14px;
+            border-radius: 16px 16px 4px 16px;
+            max-width: 70%;
+            word-break: break-word;
+        }
+
+        .bot-msg {
+            color: #ffffff;
+            align-self: flex-start;
+            background-color: #7a4df4;
+            padding: 10px 14px;
+            border-radius: 16px 16px 16px 4px;
+            max-width: 70%;
+            word-break: break-word;
+        }
+
+        #chat-form {
+            display: flex;
+            justify-content: center;
+            max-width: 500px;
+            margin: 0 auto 2em auto;
+            gap: 0.5em;
+        }
+
+        #user-input {
+            flex: 1;
+            padding: 0.7em;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 1em;
+        }
+
+        button {
+            padding: 0.7em 1.2em;
+            background: #4caf50;
+            color: #fff;
+            border-radius: 8px;
+            border: none;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        button:hover {
+            background: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Chatbot Web App</h2>
+    <div id="chat-area"></div>
+    <form id="chat-form">
+        <input type="text" id="user-input" placeholder="Type your message...">
+        <button type="submit">Send</button>
+    </form>
+    <script>
+        let category = '';
+        let subCategory = '';
+
+        function getBotReply(msg) {
+            msg = msg.toLowerCase();
+
+            if (msg.includes('categories')) {
+                category = '';
+                subCategory = '';
+                return "Please choose a category: sports, academic interest, or music.";
+            }
+
+            if (msg.includes('sports')) {
+                category = 'sports';
+                subCategory = '';
+                return "Which sport do you like: soccer or baseball?";
+            }
+
+            if (category === 'sports') {
+                if (msg.includes('soccer')) {
+                    subCategory = 'soccer';
+                    return "Soccer is the world's most popular sport! Want to know about rules, players, or famous teams?";
+                }
+                if (msg.includes('baseball')) {
+                    subCategory = 'baseball';
+                    return "Baseball is known as America's pastime!";
+                }
+            }
+
+            if (subCategory === 'soccer') {
+                if (msg.includes('rules')) return "A soccer game lasts 90 minutes, split into two halves.";
+                if (msg.includes('famous')) return "Some famous players include Messi, Ronaldo, and Mbappé.";
+                if (msg.includes('teams')) return "Top clubs include FC Barcelona, Real Madrid, and Manchester City.";
+                if (msg.includes('how many players')) return "Each team has 11 players on the field.";
+                if (msg.includes('goalie')) return "The goalie is the only player allowed to use hands inside the penalty box.";
+                if (msg.includes('positions')) return "Positions include forwards, midfielders, defenders, and the goalkeeper.";
+            }
+
+            if (msg.includes('hello') || msg.includes('hi')) return "Hello! How can I help you?";
+            if (msg.includes('name')) return "I'm GroWiseBot!";
+            if (msg.includes('weather')) return "I cannot predict the weather!";
+            if (msg.includes('joke')) return "Why did the chicken cross the road? To get to the other side!";
+            if (msg.includes('how are you')) return "I'm just code, but I'm running smoothly!";
+            if (msg.includes('help')) return "Sure! Ask me anything like weather, jokes, or who I am.";
+            if (msg.includes('time')) return "I can't tell exact time, but it's always a good time to chat!";
+            if (msg.includes('who made you')) return "I was created by Sanaya!";
+            if (msg.includes('bye')) return "Goodbye! Talk to you later.";
+
+            return "Tell me more!";
+        }
+
+        const chatArea = document.getElementById('chat-area');
+        document.getElementById('chat-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const input = document.getElementById('user-input');
+            const msg = input.value.trim();
+            if (msg) {
+                chatArea.innerHTML += `<div class="user-msg">${msg}</div>`;
+                setTimeout(() => {
+                    chatArea.innerHTML += `<div class="bot-msg">${getBotReply(msg)}</div>`;
+                    chatArea.scrollTop = chatArea.scrollHeight;
+                }, 300);
+                input.value = '';
+                chatArea.scrollTop = chatArea.scrollHeight;
+            }
+        });
+    </script>
+</body>
+
+</html>

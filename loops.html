@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <title>Countdown from 10</title>
+ </head>
+<body>
+     <h2>Countdown from 10</h2>
+    <button onclick="countDown()">Start Countdown</button>
+    <div id="countdown"></div>
+    <script>
+        function countDown() {
+            var output ="";
+            var i = 10;
+            while(i>=1){
+                output += i + " ";
+                i--;
+             }
+            document.getElementById("coutndown").textContent = output;
+        }
+        </script>
+    </body>
+</html>

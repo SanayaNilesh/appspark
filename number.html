@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+<title> Numbers </title>
+</head>
+<body>
+<h2>Print Numbers</h2>
+<div id="num_list"></div>
+<div id="list"></div>
+<script>
+    let num_list = [2, 4, 6, 8 ,10, 12, 14]
+    document.getElementById("list").innerHTML = "Numbers are: " + num_list;
+    total = 0;
+   for (let i=0;i<num_list.length; i++){ 
+    total += num_list[i];
+    document.getElementById("num_list").innerHTML = "Total is: " + total;
+     }
+</script>
+</body>
+</html>

@@ -1,18 +1,33 @@
 <!DOCTYPE html>
-<title>
-    This is my listing lesson page.
-</title>
+<html>
+
+<head>
+    <title>Multiplication Table</title>
+</head>
+
 <body>
-    <h1>
-        School Subjects
-    </h1>
-<ol>
-    <li>
-       Math, English, Spanish
-    </li>
-</ol>
- <ul> 
-       <li>Science</li>
-        <li> Math</li> 
-    </ul>
+    <h2>Multiplication Table</h2>
+    <input type="number" id="tableNumber" placeholder="Enter a number">
+    <input type="number" id="tableRange" placeholder="Enter a range">
+    <button onclick="showTable()">Show Table</button>
+    <div id="table"></div>
+    <script>
+        function showTable() {
+            var num = document.getElementById("tableNumber").value;
+            var num2 = document.getElementById("tableRange").value;
+            var tableHTML = "";
+            if (num == "" || isNaN(num)) {
+                tableHTML = "Please enter a valid number";
+            } else if (num2 >= 10) {
+                tableHTML = "Please enter a valid range less than 10";
+             } else {
+                for(var i = 1; i <= num2 ; i++) {
+                tableHTML += num + "^" + i + "=" + (num ** i) + "<br>";
+                }
+            }
+        document.getElementById("table").innerHTML = tableHTML;
+        }
+    </script>
 </body>
+
+</html>

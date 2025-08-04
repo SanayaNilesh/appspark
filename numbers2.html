@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> Numbers </title>
+</head>
+
+<body>
+    <h2>Print Numbers</h2>
+    <div id="num_list"></div>
+    <div id="list"></div>
+    <div id="num_mult"></div>
+    <div id="even"></div>
+    <div id="three"></div>
+    <script>
+        function add(num_list) {
+            total = 0;
+            for (num in num_list) {
+                total += num_list[num];
+                document.getElementById("num_mult").innerHTML = "Total is: <b>" + total + "</b>";
+            }
+        }
+        function multiply(num_list) {
+            total = 1
+            for (num in num_list) {
+                total *= num_list[num];
+                document.getElementById("num_list").innerHTML = "Multiplication Total is: <b>" + total + "</b>";
+            }
+        }
+        function even(num_list) {
+            count = 0
+            all_numbers = ''
+            for (index in num_list) {
+                if (num_list[index] % 2 == 0) {
+                    count++;
+                    all_numbers += num_list[index] + ", " 
+                }
+                document.getElementById("even").innerHTML =
+                    "Total even numbers are: <b>" + count + "</b>" +
+                    " and all Even numbers are: " + all_numbers.trim(' ');
+            }
+        }
+        function three(num_list) {
+            count = 0
+            for (num1 in num_list) {
+                if (num_list[num1] % 3 == 0) { count++ }
+                document.getElementById("three").innerHTML = "Total number / by 3 are: <b>" + count + "</b>";
+            }
+        }
+        let num_list = [2, 15, 6, 27, 12,]
+        document.getElementById("list").innerHTML = "Numbers Are: <b><span style=color:blue>" + num_list + "</span style=color:blue></b>";
+        add(num_list)
+        multiply(num_list)
+        even(num_list)
+        three(num_list)
+    </script>
+</body>
+
+</html>

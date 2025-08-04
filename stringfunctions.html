@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>String Manipulations</title>
+</head>
+
+<body>
+    <p id="string"></p>
+    <script type="text/javascript">
+        let myStr = "String Manipulation Functions. We are learning string Functions"
+
+        function Sfunction(str) {
+            msg = "String.split is: "
+            strArr = str.split(".");
+            return msg + strArr[0];
+        }
+        mainmsg = "<span style=color:blue><b>" + " String Functions " + "</b></span>"
+        document.getElementById("string").innerHTML = mainmsg + "<br></br>" +
+            Sfunction(myStr) + "<br></br>";
+    </script>
+
+</body>
+
+
+</html>
